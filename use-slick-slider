@@ -1,0 +1,516 @@
+
+<div class="custhide-{{section.id}}">
+<div class="owl-sli-swiper">
+    <div class="page-width" data-aos="fade-up"
+         data-aos-duration="2000">
+      {%- assign product = all_products[section.settings.featured_product] -%}
+      {%- assign producttwo = all_products[section.settings.featured_product02] -%}
+      {%- assign productfour = all_products[section.settings.featured_product03] -%}
+      {%- assign productfive = all_products[section.settings.featured_product04] -%}
+
+      <div class="section-header text-center cutom-se-head">
+        {% if section.settings.title != blank %}
+        <h2>{{ section.settings.title | escape }}</h2>
+        {% endif %}  
+        {% if section.settings.subtitle != blank %}
+        <p>{{ section.settings.subtitle }}</p>
+        {% endif %}  
+      </div>
+
+
+      <div class="grid">
+        <div class="grid__item medium-up--one-half">
+          <div class="owimg-b">
+            <div class="tri-img">
+            <img src="{{ section.settings.imgpto | img_url: '1024x' }}">
+            </div>
+            {% if section.settings.featured_productpo1 %}
+            <div class="nxt-blo">
+              <div class="btnJump01" data-slide="1"><span></span></div>
+            </div>
+            {% endif %}      
+            {% if section.settings.featured_productpo2  %}
+            <div class="prev-blo">
+              <div class="btnJump02" data-slide="2"><span></span></div>
+            </div>
+            {% endif %}  
+            {% if section.settings.featured_productpo3  %}
+            <div class="nxt-blo01">
+              <div class="btnJump03" data-slide="3"><span></span></div>
+            </div>
+
+            {% endif %}  
+            {% if section.settings.featured_productpo4  %}
+            <div class="nxt-blo02">
+              <div class="btnJump04" data-slide="4"><span></span></div>
+            </div>
+
+            {% endif %}  
+          </div>
+        </div>
+        <div class="grid__item medium-up--one-half" id="se--{{section.id}}">
+          {% if section.settings.featured_product != blank %}
+          <div class="owl-slids-pro ">
+            <div class="block01">
+              <div class="inn-bloc">
+                <img src="{{ product | img_url: '500x500' }}">
+                <h2> <a href="{{product.url}}"> {{ product.title }} </a></h2>
+                <div class="featured-product__price">
+                  {{product.price | money}}
+                </div>
+
+                <form method="post" action="/cart/add"  >
+                  <input type="hidden" name="id" value="{{ product.variants.first.id }}" />
+                  <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+                  <input type="submit" value="Add to cart »" class="btn" />
+                </form> 
+
+              </div>
+            </div>
+            {% endif %}  
+            {% if section.settings.featured_product02 != blank %}
+            <div class="block02">
+              <div class="inn-bloc">
+                <img src="{{ producttwo | img_url: '500x500' }}">
+                <h2>  <a href="{{producttwo.url}}">  {{ producttwo.title }} </a></h2>
+                <div class="featured-product__price">
+                  {{producttwo.price | money}}
+                </div>
+
+                <form method="post" action="/cart/add">
+                  <input type="hidden" name="id" value="{{ producttwo.variants.first.id }}" />
+                  <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+                  <input type="submit" value="Add to cart »" class="btn" />
+                </form> 
+
+              </div>
+            </div>
+            {% endif %}  
+            {% if section.settings.featured_product03 != blank %}
+            <div class="block02">
+              <div class="inn-bloc">
+                <img src="{{ productfour | img_url: '500x500' }}">
+                <h2>  <a href="{{productfour.url}}">  {{ productfour.title }} </a></h2>
+                <div class="featured-product__price">
+                  {{productfour.price | money}}
+                </div>
+
+                <form method="post" action="/cart/add">
+                  <input type="hidden" name="id" value="{{ productfour.variants.first.id }}" />
+                  <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+                  <input type="submit" value="Add to cart »" class="btn" />
+                </form> 
+
+              </div>
+            </div>
+            {% endif %}  
+            {% if section.settings.featured_product04 != blank %}
+            <div class="block02">
+              <div class="inn-bloc">
+                <img src="{{ productfive | img_url: '500x500' }}">
+                <h2> <a href="{{productfive.url}}"> {{ productfive.title }} </a></h2>
+                <div class="featured-product__price">
+                  {{productfive.price | money}}
+                </div>
+                <form method="post" action="/cart/add">
+                  <input type="hidden" name="id" value="{{ productfive.variants.first.id }}" />
+                  <input min="1" type="hidden" id="quantity" name="quantity" value="1"/>
+                  <input type="submit" value="Add to cart »" class="btn" />
+                </form> 
+              </div>
+            </div>
+            {% endif %}  
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<style>
+  .owimg-b {
+    position: relative;
+  }
+  .prev-blo span,
+  .nxt-blo span,
+  .nxt-blo01 span,
+  .nxt-blo02 span {
+    width: 15px;
+    height: 15px;
+    display: block;
+    text-align: center;
+    margin: 8px auto;
+    border-radius: 22px; }
+
+  .nxt-blo {
+    position: absolute;
+    top: {{section.settings.top_1}}%;
+    width: 30px;
+    left: {{section.settings.left_1}}%;
+    height: 30px;
+    background: #ffffff4f;
+    border-radius: 50px;
+    box-shadow: 1px 0px 10px #fff;
+    cursor: pointer;
+  }
+
+  .prev-blo {
+    position: absolute;
+    top: {{section.settings.top_2}}%;
+    width: 30px;
+    left: {{section.settings.left_2}}%;
+    height: 30px;
+    background: #ffffff4f;
+    border-radius: 50px;
+    box-shadow: 1px 0px 10px #fff;
+    cursor: pointer;
+  }
+  .nxt-blo01 {
+    position: absolute;
+    top: {{section.settings.top_3}}%;
+    width: 30px;
+    left: {{section.settings.left_3}}%;
+    height: 30px;
+    background: #ffffff4f;
+    border-radius: 50px;
+    box-shadow: 1px 0px 10px #fff;
+    cursor: pointer;
+  }
+  .nxt-blo02 {
+    position: absolute;
+    top: {{section.settings.top_4}}%;
+    width: 30px;
+    left: {{section.settings.left_4}}%;
+    height: 30px;
+    background: #ffffff4f;
+    border-radius: 50px;
+    box-shadow: 1px 0px 10px #fff;
+    cursor: pointer;
+  }
+  {% if section.settings.poin_color != blank %}
+  .prev-blo span, .nxt-blo span, .nxt-blo01 span, .nxt-blo02 span {
+    background: {{section.settings.poin_color}};
+  }
+  {% endif %}
+</style>
+<script>
+  $('.owl-slids-pro').slick({
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: false,
+    fade: true
+  });
+  
+
+  
+  $('div[data-slide]').click(function(e) {
+    e.preventDefault();
+    var slideno = $(this).data('slide');
+    $('.owl-slids-pro').slick('slickGoTo', slideno - 1);
+  });
+
+  
+</script>
+
+{% schema %}
+ {
+  "name": "Section name",
+  "class": "tabslider",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": {
+        "da": "Overskrift",
+        "de": "Titel",
+        "en": "Heading",
+        "es": "Título",
+        "fi": "Otsake",
+        "fr": "En-tête",
+        "hi": "शीर्षक",
+        "it": "Heading",
+        "ja": "見出し",
+        "ko": "제목",
+        "nb": "Overskrift",
+        "nl": "Kop",
+        "pt-BR": "Título",
+        "pt-PT": "Título",
+        "sv": "Rubrik",
+        "th": "ส่วนหัว",
+        "zh-CN": "标题",
+        "zh-TW": "標題"
+      },
+      "default": {
+        "da": "Udvalgt kollektion",
+        "de": "Vorgestellte Kategorie",
+        "en": "Featured collection",
+        "es": "Colección destacada",
+        "fi": "Esittelyssä oleva kokoelma",
+        "fr": "Collection en vedette",
+        "hi": "फ़ीचर्ड कलेक्शन",
+        "it": "Collezione in evidenza",
+        "ja": "特集コレクション",
+        "ko": "추천 컬렉션",
+        "nb": "Fremhevet samling",
+        "nl": "Uitgelichte collectie",
+        "pt-BR": "Coleção em destaque",
+        "pt-PT": "Coleção em destaque",
+        "sv": "Utvald kollektion",
+        "th": "คอลเลกชันแนะนำ",
+        "zh-CN": "特色产品系列",
+        "zh-TW": "精選商品系列"
+      }
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sub Title"
+    },
+    {
+      "type": "image_picker",
+      "id": "imgpto",
+      "label": "Product Image"
+    },
+    {
+      "type": "product",
+      "id": "featured_product",
+      "label": {
+        "da": "Produkt",
+        "de": "Produkte",
+        "en": "Product",
+        "es": "Producto",
+        "fi": "Tuote",
+        "fr": "Produit",
+        "hi": "उत्पाद",
+        "it": "Prodotto",
+        "ja": "商品",
+        "ko": "제품",
+        "nb": "Produkt",
+        "nl": "Product",
+        "pt-BR": "Produto",
+        "pt-PT": "Produto",
+        "sv": "Produkt",
+        "th": "สินค้า",
+        "zh-CN": "产品",
+        "zh-TW": "產品"
+      }
+    },
+    {
+      "type": "product",
+      "id": "featured_product02",
+      "label": {
+        "da": "Produkt",
+        "de": "Produkte",
+        "en": "Product",
+        "es": "Producto",
+        "fi": "Tuote",
+        "fr": "Produit",
+        "hi": "उत्पाद",
+        "it": "Prodotto",
+        "ja": "商品",
+        "ko": "제품",
+        "nb": "Produkt",
+        "nl": "Product",
+        "pt-BR": "Produto",
+        "pt-PT": "Produto",
+        "sv": "Produkt",
+        "th": "สินค้า",
+        "zh-CN": "产品",
+        "zh-TW": "產品"
+      }
+    },
+    {
+      "type": "product",
+      "id": "featured_product03",
+      "label": {
+        "da": "Produkt",
+        "de": "Produkte",
+        "en": "Product",
+        "es": "Producto",
+        "fi": "Tuote",
+        "fr": "Produit",
+        "hi": "उत्पाद",
+        "it": "Prodotto",
+        "ja": "商品",
+        "ko": "제품",
+        "nb": "Produkt",
+        "nl": "Product",
+        "pt-BR": "Produto",
+        "pt-PT": "Produto",
+        "sv": "Produkt",
+        "th": "สินค้า",
+        "zh-CN": "产品",
+        "zh-TW": "產品"
+      }
+    },
+    {
+      "type": "product",
+      "id": "featured_product04",
+      "label": {
+        "da": "Produkt",
+        "de": "Produkte",
+        "en": "Product",
+        "es": "Producto",
+        "fi": "Tuote",
+        "fr": "Produit",
+        "hi": "उत्पाद",
+        "it": "Prodotto",
+        "ja": "商品",
+        "ko": "제품",
+        "nb": "Produkt",
+        "nl": "Product",
+        "pt-BR": "Produto",
+        "pt-PT": "Produto",
+        "sv": "Produkt",
+        "th": "สินค้า",
+        "zh-CN": "产品",
+        "zh-TW": "產品"
+      }
+    },
+    {
+      "type": "color",
+      "id": "poin_color",
+      "label": "Pointer Color"
+    },
+    {
+      "type": "header",
+      "content": "Pointer 1"
+    },
+    {
+      "type": "checkbox",
+      "id": "featured_productpo1",
+      "label": "Pointer  Hide/Show"
+    },
+    {
+      "type": "range",
+      "id": "top_1",
+      "label": "Top Position",
+      "min": 2,
+      "max": 100,
+      "step": 2,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "left_1",
+      "label": "Left Position",
+      "min": 2,
+      "max": 100,
+      "step": 2,
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Pointer 2"
+    },
+    {
+      "type": "checkbox",
+      "id": "featured_productpo2",
+      "label": "Pointer  Hide/Show"
+    },
+    {
+      "type": "range",
+      "id": "top_2",
+      "label": "Top Position",
+      "min": 2,
+      "max": 100,
+      "step": 2,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "left_2",
+      "label": "Left Position",
+      "min": 2,
+      "max": 100,
+      "step": 2,
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Pointer 3"
+    },
+    {
+      "type": "checkbox",
+      "id": "featured_productpo3",
+      "label": "Pointer  Hide/Show"
+    },
+    {
+      "type": "range",
+      "id": "top_3",
+      "label": "Top Position",
+      "min": 2,
+      "max": 100,
+      "step": 2,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "left_3",
+      "label": "Left Position",
+      "min": 2,
+      "max": 100,
+      "step": 2,
+      "default": 2
+    },
+    {
+      "type": "header",
+      "content": "Pointer 4"
+    },
+    {
+      "type": "checkbox",
+      "id": "featured_productpo4",
+      "label": "Pointer  Hide/Show"
+    },
+    {
+      "type": "range",
+      "id": "top_4",
+      "label": "Top Position",
+      "min": 2,
+      "max": 100,
+      "step": 2,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "left_4",
+      "label": "Left Position",
+      "min": 2,
+      "max": 100,
+      "step": 2,
+      "default": 2
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Slider Tab",
+      "category": {
+        "da": "Kollektion",
+        "de": "Kategorie",
+        "en": "Collection",
+        "es": "Colección",
+        "fi": "Kokoelma",
+        "fr": "Collection",
+        "hi": "कलेक्शन",
+        "it": "Collezione",
+        "ja": "コレクション",
+        "ko": "컬렉션",
+        "nb": "Samling",
+        "nl": "Collectie",
+        "pt-BR": "Coleção",
+        "pt-PT": "Coleção",
+        "sv": "Produktserie",
+        "th": "คอลเลกชัน",
+        "zh-CN": "收藏",
+        "zh-TW": "商品系列"
+      }
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}
